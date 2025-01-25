@@ -64,16 +64,21 @@ export default function Page() {
       </div>
       <div className="flex flex-col gap-1">
         {sortedPokemon &&
-          sortedPokemon.map((poke: Pokedex_Entry, index) => {
+          sortedPokemon.map((pokemon: Pokedex_Entry, index) => {
+            const pokemonIndex = pokemon.url.split('pokemon/')[1].split('/')[0]
+
             return (
               <Link
-                href={`/pokemon/${index + 1}`}
+                href={`/pokemon/${pokemonIndex}`}
                 key={`mapped pokemon link ${index}`}>
-                <h4>{poke.name}</h4>
+                <h4>{pokemon.name}</h4>
               </Link>
             )
           })}
       </div>
+      <Link href="/" className="text-blue-400">
+        Home
+      </Link>
     </section>
   )
 }
