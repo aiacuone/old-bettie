@@ -16,6 +16,3 @@ export default function Home() {
     </main>
   )
 }
-
-// cannot see Home and Link
-// Image is not working even though coming from public folder
