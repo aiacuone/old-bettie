@@ -22,9 +22,7 @@ export default function Page() {
   const [sortedPokemon, setSortedPokemon] = useState<Pokedex_Entry[]>([])
 
   useEffect(() => {
-    axios
-      .get('/api/pokemon')
-      .then(({ data: { pokemon } }) => setPokemon(pokemon))
+    get('/api/pokemon').then(({ data: { pokemon } }) => setPokemon(pokemon))
   }, [])
 
   const sortByInputArray = [
@@ -33,15 +31,14 @@ export default function Page() {
   ]
 
   useEffect(() => {
-    if (sortBy === 'alphabet') {
+    if (sortBy === 'alphabet')
       setSortedPokemon(
         [...pokemon].sort((a, b) => a.name.localeCompare(b.name))
       )
-    } else {
+    else
       setSortedPokemon(
         [...pokemon].sort((a, b) => a.entry_number - b.entry_number)
       )
-    }
   }, [sortBy, pokemon])
 
   return (
